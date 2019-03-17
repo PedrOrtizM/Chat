@@ -1,0 +1,60 @@
+<div class="card m-5">
+  <div class="card-body">
+    <h2 class="card-title"> FireChat |
+      <small *ngIf="listaConectados.length > 0"> Sala: {{ listaConectados[0].sala }}  </small>  
+    </h2>
+    <hr>
+
+    <div class="row ">
+
+      <div class="col-md-4">
+
+        <input type="text" class="form-control mb-2" placeholder="Buscar Contacto">
+        <div class="list-group" id="list-tab" role="tablist">
+          
+          <a class="list-group-item list-group-item-action"   href="" *ngFor="let usuario of listaConectados" >
+              <img src="../../../assets/d2.jpg" class="img-size rounded-circle">
+            <span class="ml-2">
+                {{ usuario.nombre }}
+                <span class="badge badge-pill badge-success">
+                Online
+              </span>
+            </span>
+          </a>
+         
+        </div>
+      </div>
+
+
+      <div class="col-md-7 ">
+        <div class="app-mensajes border" id="app-mensajes">
+
+            <div *ngFor="let chat of chats"class="p-3 mb-2 bg-light text-dark">
+           
+             <img src="../../../assets/d2.jpg" class="img-size rounded-circle">
+               <span class="badge  ml-2"
+               [ngClass]="{'badge-primary':chat.enviado === true,'badge-info': chat.enviado != true }"> 
+             {{ chat.nombre }} 
+           </span>
+            
+                <span class="ml-5" style="display: block">
+                    {{chat.mensaje}}  
+                </span>
+            </div>
+            
+                  
+            <!-- <div *ngIf="mensaje" class="alert alert-danger" role="alert">
+              <strong>{{mensaje}}</strong>
+            </div>
+        </div> -->
+        
+       
+      </div>
+      <div class="input-group mt-1">
+          <input  (keyup.enter)="enviar()" [(ngModel)]="cajaMensaje" type="text" class="form-control" placeholder="Escribe un mensaje">                          
+                  <button (click)="enviar()" type="submit" class="btn btn-primary"> <i class="fas fa-paper-plane"></i> </button>
+      </div>
+    </div>
+</div>
+</div>
+
