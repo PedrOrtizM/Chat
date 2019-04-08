@@ -1,14 +1,14 @@
 export class Chat{
 
-    nombre: string;
-    mensaje: string;
-    fecha: Date;
+    name: string;
+    message: string;
+    date: Date;
     enviado: boolean;
 
     constructor(nombre:string,mensaje:string,fecha:Date,enviado){
-        this.nombre = nombre;
-        this.mensaje = mensaje;
-        this.fecha = fecha;
+        this.name = nombre;
+        this.message = mensaje;
+        this.date = fecha;
         this.enviado = enviado;
 
     }

@@ -23,12 +23,12 @@ export class LoginComponent implements OnInit {
 
   submit(){
       console.log(this.username,this.sala);
-      console.log(this.select);
-      console.log(
-        //document.getElementById('select').value
-      );
+      //console.log(this.select);
+      // console.log(
+      //   //document.getElementById('select').value
+      // );
       
-  //  this.router.navigate(['/chat',this.sala,this.username]);
+    this.router.navigate(['/chat',this.sala,this.username]);
     
     
   }

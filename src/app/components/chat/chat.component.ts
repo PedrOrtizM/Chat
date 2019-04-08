@@ -37,7 +37,7 @@ export class ChatComponent implements OnInit {
     this.socket.fromEvent<any>('Mensaje').subscribe(data=>{
       console.log(data);
       
-      this.chats.push( new Chat(data.nombre,data.mensaje,data.fecha,false) )
+      this.chats.push( new Chat(data.name,data.message,data.date,false) )
       console.log(this.chats);
       
     })
@@ -56,8 +56,12 @@ export class ChatComponent implements OnInit {
   conectarUsuario( usuario: Usuario){
     
       // si el server acepta ejecuta el callback
+      console.log("entró a conectar usuario");
+      
       this.socket.emit('iniciarChat',usuario, ( resp )=>{
           this.listaConectados = resp;
+          console.log(resp);
+          
       })
   
   
@@ -73,7 +77,8 @@ export class ChatComponent implements OnInit {
 enviar(){
 
     this.socket.emit('Mensaje',{mensaje: this.cajaMensaje},(data)=>{
-        this.cajaMensaje = "";
+        console.log(this.cajaMensaje);
+        
         console.log(this.chats);
         
         this.chats.push( new Chat(data.nombre,data.mensaje,data.fecha,true) )
